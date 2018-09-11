@@ -271,9 +271,9 @@ def validate(data_loader, net, loss):
     metrics = []
     with torch.no_grad():
         for i, (data, target, coord) in enumerate(data_loader):
-            data = Variable(data.cuda(async=True), volatile=True)
-            target = Variable(target.cuda(async=True), volatile=True)
-            coord = Variable(coord.cuda(async=True), volatile=True)
+            data = Variable(data.cuda(async=True))
+            target = Variable(target.cuda(async=True))
+            coord = Variable(coord.cuda(async=True))
 
             output = net(data, coord)
             loss_output = loss(output, target, train=False)
