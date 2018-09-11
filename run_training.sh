@@ -5,7 +5,7 @@ set -e
 cd detector
 maxeps=150
 f=9
-CUDA_VISIBLE_DEVICES=0 python main.py --model res18 -b 15 --resume 064.ckpt --save-dir res18/retrft96$f/ --epochs $maxeps --config config_training$f
+CUDA_VISIBLE_DEVICES=0 python main.py --model res18 -b 10 --resume 064.ckpt --save-dir res18/retrft96$f/ --epochs $maxeps --config config_training$f
 for (( i=1; i<=$maxeps; i+=1)) 
 do
     echo "process $i epoch"
