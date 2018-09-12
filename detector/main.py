@@ -28,7 +28,7 @@ parser.add_argument('-j', '--workers', default=0, type=int, metavar='N',
                     help='number of data loading workers (default: 2)')
 parser.add_argument('--epochs', default=100, type=int, metavar='N',
                     help='number of total epochs to run')
-parser.add_argument('--start-epoch', default=0, type=int, metavar='N',
+parser.add_argument('--start-epoch', default=1, type=int, metavar='N',
                     help='manual epoch number (useful on restarts)')
 parser.add_argument('-b', '--batch-size', default=16, type=int,
                     metavar='N', help='mini-batch size (default: 16)')
@@ -201,7 +201,7 @@ def main():
             lr = 0.01 * args.lr
         return lr
 
-    for epoch in range(start_epoch, args.epochs + 1):
+    for epoch in range(start_epoch, start_epoch + args.epochs):
         train(train_loader, net, loss, epoch, optimizer,
               get_lr, args.save_freq, save_dir)
         validate(val_loader, net, loss)
